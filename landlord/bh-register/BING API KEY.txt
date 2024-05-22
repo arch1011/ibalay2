@@ -1,0 +1,5 @@
+API KEY 
+
+AvFonBVo0VcCo1NO806rnp9M7EQkE7zV7fTBkCSlR0hzY-GbYE1w1RCE0emZcsHy
+
+center: new Microsoft.Maps.Location(11.1090, 125.0160), // Default center for Tanauan, Leyte, Philippines

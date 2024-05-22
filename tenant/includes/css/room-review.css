@@ -1,0 +1,24 @@
+
+.img-property-slide-wrap {
+    display: flex; /* Use flex layout to arrange images */
+    flex-direction: row; /* Display images horizontally */
+    overflow-x: auto; /* Enable horizontal scrolling if there's overflow */
+    white-space: nowrap; /* Prevent images from wrapping */
+    gap: 5px; /* Add space between images */
+}
+
+/* Image styling for consistent size and preventing overlap */
+.img-property-slide img {
+    width: 100px; /* Fixed width for consistent size */
+    height: 350px; /* Fixed height for consistent size */
+    object-fit: cover; /* Ensures the image maintains its aspect ratio while filling the container */
+    border-radius: 5px; /* Optional: rounds the corners */
+}
+
+/* To ensure the container doesn't overlap other elements like pagination */
+.img-property-slide {
+    display: inline-block; /* Keep images in a single line */
+    position: relative; /* Avoid overlapping other elements */
+    margin-bottom: 10px; /* Add space below the container */
+}
+
