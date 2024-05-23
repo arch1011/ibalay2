@@ -85,11 +85,21 @@ if ($doc2_result && !$doc2_result['success']) {
     die("Error with Document2: " . $doc2_result['message']);
 }
 
+// Function to extract file name from path
+function extractFileName($path) {
+    return basename($path);
+}
+
 // Insert into the database, including longitude and latitude
 $query = "INSERT INTO bh_information (BH_name, BH_Address, Document1, Document2, landlord_id, latitude, longitude) 
           VALUES (?, ?, ?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($query);
-$stmt->bind_param("ssssidd", $BH_name, $BH_Address, $doc1_result['path'], $doc2_result['path'], $landlord_id, $latitude, $longitude);
+
+// Extract file names
+$doc1_name = $doc1_result ? extractFileName($doc1_result['path']) : null;
+$doc2_name = $doc2_result ? extractFileName($doc2_result['path']) : null;
+
+$stmt->bind_param("ssssidd", $BH_name, $BH_Address, $doc1_name, $doc2_name, $landlord_id, $latitude, $longitude);
 
 if ($stmt->execute()) {
     header('Location: /iBalay/landlord/bh-register/bh-status.php'); 

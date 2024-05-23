@@ -199,17 +199,17 @@ ini_set('display_errors', 1);
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
-
+  
     <script>
         var currentDocumentIndex = 0;
         var documentsCount = 0;
 
-        function viewDocuments(ownerId) {
+        function viewDocuments(landlord_id) {
             // Use AJAX to fetch the document list
             $.ajax({
                 type: 'POST',
                 url: 'fetch_documents.php',
-                data: { ownerId: ownerId },
+                data: { landlord_id: landlord_id },
                 success: function (response) {
                     // Update the modal body with the fetched documents
                     $('#documentsModalBody').html(response);
@@ -274,7 +274,7 @@ function confirmAction(bhId, action) {
     $.ajax({
         type: 'POST',
         url: action === 'approve' ? 'approve_owner.php' : 'disapprove_owner.php',
-        data: { bh_id: bhId }, // Pass bh_id instead of ownerId
+        data: { bh_id: bhId }, // Pass bh_id instead of landlord_id
         success: function (response) {
             location.reload();
         },

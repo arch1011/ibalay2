@@ -90,6 +90,17 @@ if ($stmt1) {
         } else {
             echo "Error: " . mysqli_error($conn);
         }
+
+        // Update tenant's checked_out status to 0
+        $query5 = "UPDATE tenant SET checked_out = 0 WHERE TenantID = ?";
+        $stmt5 = mysqli_prepare($conn, $query5);
+        if ($stmt5) {
+            mysqli_stmt_bind_param($stmt5, "i", $tenant_id);
+            mysqli_stmt_execute($stmt5);
+            mysqli_stmt_close($stmt5);
+        } else {
+            echo "Error: " . mysqli_error($conn);
+        }
     } else {
         echo "Error: " . mysqli_error($conn);
     }
