@@ -27,12 +27,13 @@ mysqli_set_charset($conn, 'utf8');
 // Get the landlord ID from the session
 $landlord_id = $_SESSION['landlord_id'];
 
-// Query to fetch tenant details
-$query = "SELECT t.TenantID, t.FirstName, t.LastName, t.Email, t.PhoneNumber, t.student_id, t.gender, t.address, t.checked_out
-          FROM rented_rooms rr
-          INNER JOIN tenant t ON rr.TenantID = t.TenantID
-          WHERE rr.landlord_id = $landlord_id
-          AND t.checked_out = 0"; // added
+// Query to fetch tenant details, ensuring each tenant is only listed once
+$query = "
+    SELECT DISTINCT t.TenantID, t.FirstName, t.LastName, t.Email, t.PhoneNumber, t.student_id, t.gender, t.address, t.checked_out
+    FROM rented_rooms rr
+    INNER JOIN tenant t ON rr.TenantID = t.TenantID
+    WHERE rr.landlord_id = $landlord_id
+    AND t.checked_out = 0";
 
 $result = mysqli_query($conn, $query);
 
