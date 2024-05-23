@@ -1,5 +1,7 @@
 <?php
 
+//configure here
+
 $host = 'localhost'; 
 $dbname = 'iBalay_System'; 
 $username = 'root'; 

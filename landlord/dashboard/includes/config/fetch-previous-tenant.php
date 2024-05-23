@@ -41,9 +41,9 @@ if ($period_filter === 'Today') {
     $date_range = "AND YEAR(rr.end_date) = YEAR(CURDATE())";
 }
 
-// Build the query based on the date range filter
+// Build the query to count unique tenant IDs
 $query = "
-  SELECT COUNT(*) AS total_previous_tenants
+  SELECT COUNT(DISTINCT pl.tenant_id) AS total_previous_tenants
   FROM previous_landlords pl
   INNER JOIN rented_rooms rr ON pl.tenant_id = rr.TenantID
   WHERE pl.landlord_id = $landlord_id
@@ -56,11 +56,14 @@ $result = mysqli_query($conn, $query);
 // Fetch the result
 if ($result) {
     $row = mysqli_fetch_assoc($result);
-    // Get the total number of previous tenants
+    // Get the total number of unique previous tenants
     $total_previous_tenants = $row['total_previous_tenants'] ?? 0;
     // Return the result as a JSON response
     echo json_encode(['total_previous_tenants' => $total_previous_tenants]);
 } else {
     echo json_encode(['error' => 'Query failed: ' . mysqli_error($conn)]);
 }
+
+// Close the connection
+mysqli_close($conn);
 ?>

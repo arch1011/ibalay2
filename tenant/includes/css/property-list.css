@@ -1,0 +1,113 @@
+/* Container padding */
+.section {
+    padding: 40px 20px;
+  }
+  
+  /* Property slider styling */
+  .property-slider-wrap {
+    margin-bottom: 40px;
+  }
+  
+  .property-slider .property-item {
+    margin: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+  }
+  
+  .property-slider .property-item:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Image styling */
+  .property-slider .property-item .img {
+    display: block;
+    height: 200px;
+    overflow: hidden;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .property-slider .property-item .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Property content styling */
+  .property-slider .property-item .property-content {
+    padding: 15px;
+    text-align: center; /* Center align the property content */
+  }
+  
+  .property-slider .property-item .price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: center; /* Center align the price */
+  }
+  
+  .property-slider .property-item .specs {
+    display: flex;
+    justify-content: center; /* Center align the specs container */
+    gap: 15px; /* Add gap between specs items */
+    text-align: left; /* Ensure the specs text is left-aligned */
+  }
+  
+  .property-slider .property-item .specs span {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .property-slider .property-item .btn {
+    display: inline-block;
+    margin-top: 10px;
+  }
+  
+  /* Navigation controls styling */
+  #property-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+  }
+  
+  #property-nav .prev,
+  #property-nav .next {
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  #property-nav .prev:hover,
+  #property-nav .next:hover {
+    color: #007bff;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 767.98px) {
+    .section {
+      padding: 20px 10px;
+    }
+  
+    .property-slider .property-item {
+      margin: 10px auto; /* Center cards horizontally */
+      float: none; /* Ensure cards do not float */
+      display: block; /* Ensure cards are block elements */
+    }
+  
+    .property-slider-wrap {
+      text-align: center; /* Center align the slider wrap */
+    }
+  
+    .property-slider .property-item .property-content {
+      text-align: center; /* Ensure content is centered on mobile */
+    }
+  
+    .property-slider .property-item .specs {
+      justify-content: center; /* Ensure specs are centered on mobile */
+    }
+  }
+  
